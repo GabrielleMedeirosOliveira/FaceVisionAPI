@@ -36,21 +36,21 @@ def save_image_from_url(image_url, save_directory, file_name):
         print("Falha ao obter a imagem. Verifique a URL.")
 
 def facial_recognition(file_name):
-    imgElon = fr.load_image_file("./directory/{}".format(file_name))
-    imgElon = cv2.cvtColor(imgElon,cv2.COLOR_BGR2RGB)
-    imgElon2 = fr.load_image_file("./directory/Elon-Musk.jpg")
-    imgElon2 = cv2.cvtColor(imgElon2,cv2.COLOR_BGR2RGB)
+    image_by_request = fr.load_image_file("./directory/{}".format(file_name))
+    image_by_request = cv2.cvtColor(image_by_request,cv2.COLOR_BGR2RGB)
+    image_by_directory = fr.load_image_file("./directory/Elon-Musk.jpg")
+    image_by_directory = cv2.cvtColor(image_by_directory,cv2.COLOR_BGR2RGB)
 
-    faceLoc = fr.face_locations(imgElon)[0]
-    #cv2.rectangle(imgElon,(faceLoc[3],faceLoc[0]),(faceLoc[1], faceLoc[2]),(0,255,0),2)
+    face_localization = fr.face_locations(image_by_request)[0]
+    #cv2.rectangle(image_by_request,(face_localization[3],face_localization[0]),(face_localization[1], face_localization[2]),(0,255,0),2)
 
-    faceLoc2 = fr.face_locations(imgElon2)[0]
-    #cv2.rectangle(imgElon2,(faceLoc2[3],faceLoc2[0]),(faceLoc2[1], faceLoc2[2]),(0,255,0),2)
+    face_localization2 = fr.face_locations(image_by_directory)[0]
+    #cv2.rectangle(image_by_directory,(face_localization2[3],face_localization2[0]),(face_localization2[1], face_localization2[2]),(0,255,0),2)
 
-    encodeElon = fr.face_encodings(imgElon)[0]
-    encodeElon2 = fr.face_encodings(imgElon2)[0]
+    encode_by_request = fr.face_encodings(image_by_request)[0]
+    encode_by_directory = fr.face_encodings(image_by_directory)[0]
 
-    comparacao = fr.compare_faces([encodeElon], encodeElon2)
+    comparison_result = fr.compare_faces([encode_by_request], encode_by_directory)
 
-    print(comparacao)
+    print(comparison_result)
     return cv2.waitKey(0)
