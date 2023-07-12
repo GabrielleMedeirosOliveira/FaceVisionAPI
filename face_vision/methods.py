@@ -1,4 +1,4 @@
-import face_recognition as fr
+import face_recognition
 import requests
 import json
 import cv2
@@ -22,19 +22,19 @@ def save_image_from_url(image_url, save_directory, file_name):
 def facial_recognition(file_name, id):
     analyze_result = False
 
-    image_by_request = fr.load_image_file("./storage/uploads/{}".format(file_name))
+    image_by_request = face_recognition.load_image_file("./storage/uploads/{}".format(file_name))
     image_by_request = cv2.cvtColor(image_by_request, cv2.COLOR_BGR2RGB)
 
     registered_user_dir = "./storage/registered_user"
     for image_file in os.listdir(registered_user_dir):
         image_path = os.path.join(registered_user_dir, image_file)
-        image_by_directory = fr.load_image_file(image_path)
+        image_by_directory = face_recognition.load_image_file(image_path)
         image_by_directory = cv2.cvtColor(image_by_directory, cv2.COLOR_BGR2RGB)
 
-        encode_by_request = fr.face_encodings(image_by_request)[0]
-        encode_by_directory = fr.face_encodings(image_by_directory)[0]
+        encode_by_request = face_recognition.face_encodings(image_by_request)[0]
+        encode_by_directory = face_recognition.face_encodings(image_by_directory)[0]
 
-        comparison_result = fr.compare_faces([encode_by_request], encode_by_directory)
+        comparison_result = face_recognition.compare_faces([encode_by_request], encode_by_directory)
         
         if comparison_result[0]:
             analyze_result = comparison_result[0]
