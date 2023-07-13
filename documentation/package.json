@@ -1,0 +1,25 @@
+{
+    "name": "face-vision-api",
+    "version": "1.0.0",
+    "description": "",
+    "scripts": {
+        "swagger": "redoc-cli bundle ./schema.yml --output ../public/index.html",
+        "swagger:watch": "redoc-cli serve ./schema.yml -- watch",
+        "mock": "prism mock ./schema.yml -h 0.0.0.0 =p 7000 --dynamic",
+        "deploy:swagger": "fly deploy --only hosting",
+        "deploy:api-config": "",
+        "deploy:api-gateway": "",
+        "create-env": "printenv > ../.env"
+    },
+    "dependencies": {
+        "@spotlight/prism-cli": "4.6.1",
+        "redoc-cli": "^0.13.0"
+    },
+    "devDependencies": {
+        "fly-tools": "12.4.4",
+        "dotenv": "10.0.0",
+        "dotenv-utils": "^0.2.0" 
+    },
+    "author": "",
+    "license": "ISC"
+}

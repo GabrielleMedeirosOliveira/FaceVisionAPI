@@ -1,0 +1,47 @@
+openapi: 3.0.0
+info:
+  title: FacialRecognitionAPI
+  version: 1.0.0
+servers:
+  - url: http://{{host}}
+paths:
+  /api/process_image/:
+    post:
+      tags:
+        - default
+      summary: Execute Analyse
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                id: '2'
+                file_name: Bruce-Banner.jpg
+                image_url: >-
+                  https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrjOK9OLuYSJjhw9eQwvYTWu7Y5FQOHoSTCg&usqp=CAU.jpg
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/process_image/2:
+    get:
+      tags:
+        - default
+      summary: Return Image Uploaded
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/process_image/2/result:
+    get:
+      tags:
+        - default
+      summary: Return Image With Recognition Result
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
