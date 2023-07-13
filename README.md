@@ -22,6 +22,17 @@ Para inciar este projeto, é necessário instalar as dependências, que serão u
 ### Instalar as dependências
     pip install -r requirements.txt
 ```
+
+**🔴 AVISO:** Caso a biblioteca `dlib` de erro ao instalar, instale manualmente a biblioteca `CMake` com o comando abaixo e depois efetue a instalação novamente. E sim, o dlib demora bastante a se instalar.
+
+```bash
+    ### No linux:
+    sudo apt-get -y install cmake
+
+    ### No Mac(os):
+    brew install cmake
+```
+
 Este projeto já conta com o Docker configurado e pronto para uso. Basta buildar e subir os containers utilizando os seguintes comandos:
 
 ```bash
@@ -32,9 +43,9 @@ Este projeto já conta com o Docker configurado e pronto para uso. Basta buildar
 Mas caso queira rodar localmente o projeto em sua máquina basta usar o comando abaixo:
 
 ```bash
-    python manage.py runserver
+    python manage.py runserver 7000
             ou
-    python3 manage.py runserver
+    python3 manage.py runserver 7000
 ```
 
 **ATENÇÃO:** Os comandos podem variar com a versão do Python e do Docker compose instalada em sua máquina.
