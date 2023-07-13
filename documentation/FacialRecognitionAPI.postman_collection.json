@@ -1,0 +1,127 @@
+{
+	"info": {
+		"_postman_id": "bcaf3fb6-66bf-441d-b776-cf27d04a699d",
+		"name": "FacialRecognitionAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Execute Analyse",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"2\",\n    \"file_name\":\"Bruce-Banner.jpg\",\n    \"image_url\": \"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrjOK9OLuYSJjhw9eQwvYTWu7Y5FQOHoSTCg&usqp=CAU.jpg\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/api/process_image/",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"process_image",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Return Image Uploaded",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/api/process_image/2",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"process_image",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Return Image With Recognition Result",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"2\",\n    \"file_name\":\"Jonh-Travolta.jpg\",\n    \"image_url\": \"https://upload.wikimedia.org/wikipedia/commons/2/2b/John_Travolta_1997.jpg\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/api/process_image/2/result",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"process_image",
+						"2",
+						"result"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "host",
+			"value": "http://localhost:7000",
+			"type": "default"
+		}
+	]
+}
