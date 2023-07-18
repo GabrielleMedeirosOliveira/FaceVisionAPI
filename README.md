@@ -56,9 +56,9 @@ Essa aplicação possui testes, que serão utilizados para validar, se todas as 
 Os testes estão localizados em `face_vision/tests.py`. Para rodá-los é necessário que no seu terminal utilize o seguinte comando:
 
 ```bash
-    python manage.py tests.py
+    python manage.py test
                 ou
-    python3 manage.py tests.py
+    python3 manage.py test
 ```
 **🟠 Postman**
 
