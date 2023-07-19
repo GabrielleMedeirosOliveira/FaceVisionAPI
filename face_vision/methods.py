@@ -4,6 +4,7 @@ import json
 import cv2
 import base64
 import os
+import asyncio
 
 
 def save_image_from_url(image_url, save_directory, file_name):
@@ -58,3 +59,41 @@ def image_to_base64(image_path):
     with open(image_path, "rb") as image_file:
         encoded_string = base64.b64encode(image_file.read()).decode()
         return encoded_string
+    
+def image_by_camera(file_name, id):
+    xml_haar_cascade = "haarcascade_frontalface_alt2.xml"
+    
+    face_classifier = cv2.CascadeClassifier(
+        cv2.data.haarcascades + xml_haar_cascade
+    )
+
+    capture = cv2.VideoCapture(0)
+
+    capture.set(cv2.CAP_PROP_FRAME_WIDTH, 120)
+
+    capture.set(cv2.CAP_PROP_FRAME_HEIGHT, 80)
+
+    ret, frame_color = capture.read()
+    
+    faces = face_classifier.detectMultiScale(
+        frame_color, scaleFactor=1.1, minNeighbors=5, minSize=(40, 40)
+    )
+    
+    for (x, y, w, h) in faces:
+        cv2.rectangle(frame_color, (x, y), (x + w, y + h), (0, 255, 0), 4)
+
+    cv2.imshow("face", frame_color)
+
+    if ret:
+        directory = "./storage/uploads/"
+        directory_complete = directory + file_name
+
+        cv2.imwrite(directory_complete, frame_color)
+
+        print("Imagem salva com sucesso em", directory_complete)
+    else:
+        print("Erro ao capturar o quadro")
+
+    capture.release()
+    cv2.destroyAllWindows()
+    facial_recognition(file_name, id)

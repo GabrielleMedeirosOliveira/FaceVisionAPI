@@ -2,7 +2,7 @@ from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 import json
 import os
-from . import methods
+from .methods import image_by_camera, save_image_from_url, facial_recognition
 
 
 @csrf_exempt
@@ -12,11 +12,15 @@ def processing(request):
         body_str = body.decode('utf-8')
         json_data = json.loads(body_str)
 
-        image_url = json_data['image_url']
-        file_name = json_data["file_name"]
-        id = json_data["id"]
-        methods.save_image_from_url(image_url, "./storage/uploads", file_name)
-        methods.facial_recognition(file_name, id)
+        image_url = json_data.get('image_url')
+        file_name = json_data.get('file_name')
+        id = json_data.get('id')
+
+        if not image_url:
+            image_by_camera(file_name, id)
+        else:
+            save_image_from_url(image_url, './storage/uploads', file_name)            
+            facial_recognition(file_name, id)
 
         return HttpResponse(status=200)
     
