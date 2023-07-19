@@ -12,7 +12,35 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"id\": \"2\",\n    \"file_name\":\"Bruce-Banner.jpg\",\n    \"image_url\": \"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrjOK9OLuYSJjhw9eQwvYTWu7Y5FQOHoSTCg&usqp=CAU.jpg\"\n}",
+					"raw": "{\n    \"id\": \"3\",\n    \"file_name\":\"Jeff-Bezoz.jpg\",\n    \"image_url\": \"https://f.i.uol.com.br/fotografia/2020/04/30/15882883125eab5b380a007_1588288312_3x2_md.jpg\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/api/process_image/",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"process_image",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Execute Analyse By Camera",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"5\",\n    \"file_name\":\"Gabrielle-Oliveira.jpg\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -51,14 +79,14 @@
 					}
 				},
 				"url": {
-					"raw": "{{host}}/api/process_image/2",
+					"raw": "{{host}}/api/process_image/3",
 					"host": [
 						"{{host}}"
 					],
 					"path": [
 						"api",
 						"process_image",
-						"2"
+						"3"
 					]
 				}
 			},
@@ -82,14 +110,14 @@
 					}
 				},
 				"url": {
-					"raw": "{{host}}/api/process_image/2/result",
+					"raw": "{{host}}/api/process_image/3/result",
 					"host": [
 						"{{host}}"
 					],
 					"path": [
 						"api",
 						"process_image",
-						"2",
+						"3",
 						"result"
 					]
 				}
